@@ -1,0 +1,143 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage[referable]{threeparttablex}
+\usepackage[small,bf,tableposition=below]{caption}
+\captionsetup[longtable]{skip=1em}
+\usepackage[table]{xcolor}
+\usepackage[left=.5in,right=0.5in]{geometry}
+
+
+\usepackage[T1]{fontenc}
+\usepackage{inconsolata}
+
+\NewExpandableDocumentCommand \ltsubcap { m }
+{%
+	%\rowcolor[HTML]{C0C0C0}
+	\multicolumn{7}{l}{\textbf{#1}}\\
+	% \midrule
+}
+
+\begin{document}
+	\begin{ThreePartTable}
+		\begin{TableNotes}
+			\item[1] \label{tn:aside} Here be a footnote
+			\item[2] \label{tn:lol} Guaranteed by Design
+		\end{TableNotes}
+		\begin{longtable}{p{5.5cm}lrrrlm{5.75cm}}
+			
+			% see https://tex.stackexchange.com/questions/628544/vertical-alignment-in-longtable-cells
+			\captionsetup{labelformat=empty}
+			\caption{Limits apply over the operating \textbf{\textcolor{blue}{junction}} temperature (TJ) range of –40°C to +125°C, unless otherwise stated. Minimum and maximum limits are specified through test, design or statistical correlation. Typical values represent the most likely parametric norm at TJ = 25°C, and are provided for reference purposes only. Unless otherwise stated, the following conditions apply:VIN = 12 V, VEN = 4 V }
+			\\
+			
+			\toprule
+			\rowcolor[HTML]{D9D9D9} 
+			\multicolumn{2}{l}{\textbf{Parameter}} 
+			& \multicolumn{4}{l}{\textbf{Limits}} 
+			& \multicolumn{1}{l}{\textbf{Test Conditions}}					
+			\\ 		
+			\cmidrule(r){1-2}\cmidrule(r){3-6}
+			
+			% This defines the sub-title bar
+			\rowcolor[HTML]{F2F2F2} 
+			\textbf{Description} 
+			& \textbf{Symbol} 
+			& \textbf{Min} 
+			& \textbf{Typ} 
+			& \textbf{Max} 
+			& \textbf{Unit} 
+			&  
+			\\ 
+			\cmidrule{1-7}
+			
+			% \ltsubcaption
+			\endhead
+			\bottomrule
+			\endfoot
+			\bottomrule
+			\insertTableNotes\\
+			\endlastfoot
+			
+			% these are for formatting reference only
+			%\multirow{2}{*}{Output Voltage Range}     & \multirow{2}{*}{merge me} 
+			
+			\ltsubcap{Power Supply Rails}			  % table sub-section title
+			Input Voltage Range 					& % description
+			V\textsubscript{IN} 					& % symbol
+			3.8 									& % min		
+													& % typ
+			36.0\tnotex{tn:aside} 					& % max
+			V 										& % unit 
+			V\textsubscript{IN} to PGND description   % test condition
+			\\
+			Output Voltage Range   					& % description
+			V\textsubscript{OUT}  					& % symbol
+			1.8										& % min
+			2.2  									& % typ
+			2.4       								& % max
+			V          								& % unit 
+			This is description of condition for 1 	  % test condition       
+			\\		
+			Parameter of 3  						&	% description
+			Limit     								& 	% symbol
+			1000      								& 	% min
+			1.0       								& 	% typ
+			2.2       								& 	% max
+			V         								&   % unit 
+									  					% test condition
+			\\
+			
+			
+			\toprule
+			\ltsubcap{Internal Voltage Rails}
+			
+			Parameter of 6 longer           & Limit         & 2.7       &           & 45        & v         &   \\
+			Parameter of 7 much longer      & Limit         & 1.8       & 2.2       & 2.4       & v         &   \\
+			Parameter of 8 watch the length & Limit         & 100.25    & 99.5      & 100       & v         &   \\
+			Parameter of 9      & Limit     & 1000      & 1.0       & 2.2       & v         &   \\
+			Parameter of A      & Limit     & 4.8       & 0.50      & 0.75      & v     &   \\
+			Parameter of B      & Limit     & 0.125     & 0.100     & 0.250     & v         &   \\
+			
+			Parameter of C      & Limit         & 2.7       &           & 45        & v         &   I may be a long description \\
+			Parameter of D      & Limit         & 1.8       & 2.2       & 2.4       & v         &   I could well be a longer description\\
+			Parameter of E      & Limit         & 100.25    & 99.5      & 100       & v         &   \\
+			Parameter of F      & Limit     & 1000      & 1.0       & 2.2       & v         &   \\
+			Parameter of 10     & Limit     & 4.8       & 0.50      & 0.75      & v     &   \\
+			Parameter of 11     & Limit     & 0.125     & 0.100     & 0.250     & v         &   \\
+			
+			\toprule
+			\ltsubcap{Voltage Reference}
+			
+			Parameter of 12     & Limit         & 2.7       &           & 45        & v         &       \\
+			Parameter of 13     & Limit         & 1.8       & 2.2       & 2.4       & v         &       \\
+			Parameter of 14     & Limit         & 100.25    & 99.5      & 100       & v         &       \\
+			Parameter of 15     & Limit         & 1000      & 1.0       & 2.2       & v         &       \\
+			Parameter of 16     & Limit         & 4.8       & 0.50      & 0.75      & v         &       \\
+			Parameter of 17     & Limit         & 0.125     & 0.100     & 0.250     & v         &       \\
+			
+			Parameter of 18     & Limit         & 2.7       &           & 45        & v         &       \\
+			Parameter of 19     & Limit         & 1.8       & 2.2       & 2.4       & v         &       \\
+			Parameter of 1A     & Limit         & 100.25    & 99.5      & 100       & v         &       \\
+			Parameter of 1B     & Limit         & 1000      & 1.0       & 2.2       & v         &       \\
+			Parameter of 1C     & Limit         & 4.8       & 0.50      & 0.75      & v         &       \\
+			Parameter of 1D     & Limit         & 0.125     & 0.100     & 0.250     & v         &       \\
+			
+			\newpage
+			\toprule
+			\ltsubcap{Current Limits}
+			
+			Parameter of 1E     & Limit     & 2.7       &           & 45        & v         &       \\
+			Parameter of 1F     & Limit     & 1.8       & 2.2       & 2.4       & v         &       \\
+			Parameter of 20     & Limit     & 100.25    & 99.5      & 100       & v         &       \\
+			Parameter of 21     & Limit     & 1000      & 1.0       & 2.2       & v         &       \\
+			Parameter of 22     & Limit     & 4.8       & 0.50      & 0.75      & v         &       \\
+			Parameter of 23     & Limit     & 0.125     & 0.100     & 0.250     & v         &       \\
+			
+		\end{longtable}
+	\end{ThreePartTable}
+	
+\end{document}
